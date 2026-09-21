@@ -1,26 +1,116 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #07111f;
+  --foreground: #f8fafc;
+
+  --surface: #0d1b2a;
+  --surface-light: #13263a;
+
+  --primary: #4da3ff;
+  --primary-dark: #2477c8;
+
+  --emergency: #ef4444;
+  --emergency-dark: #b91c1c;
+
+  --warning: #f59e0b;
+  --success: #22c55e;
+  --info: #38bdf8;
+
+  --text-secondary: #a8b5c4;
+  --text-muted: #718096;
+
+  --border: #203449;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: rgba(77, 163, 255, 0.3);
+  color: #ffffff;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #29415a;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #385873;
+}
+
+/* Reusable utility classes */
+
+.glass {
+  background: rgba(13, 27, 42, 0.78);
+  border: 1px solid rgba(77, 163, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.card-surface {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.emergency-glow {
+  box-shadow:
+    0 0 0 1px rgba(239, 68, 68, 0.2),
+    0 0 30px rgba(239, 68, 68, 0.08);
+}
+
+.primary-glow {
+  box-shadow:
+    0 0 0 1px rgba(77, 163, 255, 0.15),
+    0 0 30px rgba(77, 163, 255, 0.08);
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
